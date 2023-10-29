@@ -1,5 +1,6 @@
 # DSD
 Desenvolvimento de Sistemas Distribuídos
+Esse é um exemplo RMI de armazenamento de dados.
 
 1. Criar ambiente virtual
 ```
@@ -16,10 +17,12 @@ pip install rpyc
 ```
 4. Rodar Servidor:
   ```
-python ArmazenamentoServidor.py
+python servidor.py
 ```
 
 5. Rodar Cliente:
 ```
-python ArmazenamentoCliente.py
+python cliente.py
 ```
+
+
