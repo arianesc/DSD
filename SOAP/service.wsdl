@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ExemploServico"
+  targetNamespace="http://exemplo.com/servico"
+  xmlns:tns="http://exemplo.com/servico"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+  <types>
+    <xsd:schema targetNamespace="http://exemplo.com/servico">
+      <xsd:element name="Mensagem">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Texto" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+
+  <message name="MensagemRequest">
+    <part name="parameters" element="tns:Mensagem"/>
+  </message>
+
+  <message name="MensagemResponse">
+    <part name="parameters" element="tns:Mensagem"/>
+  </message>
+
+  <portType name="ServicoPortType">
+    <operation name="EnviarMensagem">
+      <input message="tns:MensagemRequest"/>
+      <output message="tns:MensagemResponse"/>
+    </operation>
+  </portType>
+
+  <binding name="ServicoBinding" type="tns:ServicoPortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="EnviarMensagem">
+      <soap:operation soapAction="http://exemplo.com/servico#EnviarMensagem"/>
+      <input>
+        <soap:body use="encoded" namespace="http://exemplo.com/servico" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://exemplo.com/servico" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+      </output>
+    </operation>
+  </binding>
+
+  <service name="Servico">
+    <port name="ServicoPort" binding="tns:ServicoBinding">
+      <soap:address location="http://localhost:8080/servico"/>
+    </port>
+  </service>
+</definitions>
