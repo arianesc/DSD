@@ -52,6 +52,15 @@ class Localizacao():
             print(f'Erro ao consumir: {e}')
             return None
 
+class Relatorio():
+    def get(id):
+        try:
+            response = requests.get(f'http://localhost:3000/relatorio/{id}')
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f'Erro ao consumir: {e}')
+            return None
 
 # class Episodio():
 #
@@ -75,9 +84,8 @@ class Localizacao():
 class Relatorio():
     def get(id):
         try:
-            personagem = Personagem.get(id)
-            local = Localizacao.get(id)
-            return personagem, local
+            relatorio = Relatorio.get(id)
+            return relatorio
         except requests.exceptions.RequestException as e:
             print(f'Erro ao consumir: {e}')
             return None

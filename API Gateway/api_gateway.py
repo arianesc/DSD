@@ -18,7 +18,7 @@ def api_info(self):
         return jsonify(response.json())
     except requests.exceptions.RequestException as e:
         print(f'Erro ao acessar o Microserviço 1: {e}')
-        return jsonify({'error': 'Erro ao acessar o Microserviço 1'}), 500
+        return jsonify({'error': 'Erro ao acessar o Microserviço'}), 500
 
 
 # PERSONAGEM
@@ -41,7 +41,7 @@ def get_character(id):
         return jsonify(response.json())
     except requests.exceptions.RequestException as e:
         print(f'Erro ao acessar o Microserviço: {e}')
-        return jsonify({'error': 'Erro ao acessar o Microserviço 1'}), 500
+        return jsonify({'error': 'Erro ao acessar o Microserviço'}), 500
 
 
 # LOCALIZAÇÂO
@@ -53,7 +53,7 @@ def get_all_locations():
         return jsonify(response.json())
     except requests.exceptions.RequestException as e:
         print(f'Erro ao acessar o Microserviço: {e}')
-        return jsonify({'error': 'Erro ao acessar o Microserviço 1'}), 500
+        return jsonify({'error': 'Erro ao acessar o Microserviço'}), 500
 
 
 @app.route('/localizacao/<id>', methods=['GET'])
@@ -64,7 +64,26 @@ def get_location(id):
         return jsonify(response.json())
     except requests.exceptions.RequestException as e:
         print(f'Erro ao acessar o Microserviço: {e}')
-        return jsonify({'error': 'Erro ao acessar o Microserviço 1'}), 500
+        return jsonify({'error': 'Erro ao acessar o Microserviço'}), 500
+
+
+@app.route('/relatorio/<id>', methods=['GET'])
+def get_relatorio(id):
+    try:
+        location_response = requests.get(location_url + str(id))
+        location_response.raise_for_status()
+        location_response = jsonify(location_response.json())
+
+        chacarter_response = requests.get(character_url + str(id))
+        chacarter_response.raise_for_status()
+        chacarter_response = jsonify(chacarter_response.json())
+
+        return chacarter_response, location_response
+
+    except requests.exceptions.RequestException as e:
+        print(f'Erro ao acessar o Microserviço: {e}')
+        return jsonify({'error': 'Erro ao acessar o Microserviço'}), 500
+
 
 # # EPISODIO
 # @app.route('/episodio')
