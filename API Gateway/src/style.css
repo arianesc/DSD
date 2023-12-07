@@ -1,0 +1,15 @@
+body{
+    width: 100vh;
+    display: grid;
+    grid-template-columns: 2fr;
+    gap: 100px;
+
+}
+
+.card{
+    border-radius: 2px;
+    background-color: gray;
+    width: 100vh;
+    height: auto;
+    padding: 20px;
+}

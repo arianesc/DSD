@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Rick and Morty</title>
 </head>
 <body>
-    <input type="text" id="meuInput" placeholder="Digite algo">
-    <button onclick="getPersonagens()">Buscar JSON</button>
-    
-    <div id="resultado"></div>
+    <div class="card">
+        <input type="text" id="meuInput" placeholder="Digite o Id do Personagem">
+        <button onclick="getPersonagens()">Buscar Personagem</button>
+        <div id="resultado"></div>
+        <script src="./personagens.js"></script>
+    </div>
 
-    <script src="./index.js"></script>
+    <div class="card">
+        <input type="text" id="relatorioInput" placeholder="Digite o Id do Relatório">
+        <button onclick="getRelatorio()">Gerar Relatório</button>
+        <div id="relatorio"></div>
+        <script src="./relatorios.js"></script>
+    </div>
+    
     
 </body>
 </html>
