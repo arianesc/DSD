@@ -72,13 +72,10 @@ def get_relatorio(id):
     try:
         location_response = requests.get(location_url + str(id))
         location_response.raise_for_status()
-        location_response = jsonify(location_response.json())
 
         chacarter_response = requests.get(character_url + str(id))
         chacarter_response.raise_for_status()
-        chacarter_response = jsonify(chacarter_response.json())
-
-        return chacarter_response, location_response
+        return jsonify(chacarter_response.json(), location_response.json())
 
     except requests.exceptions.RequestException as e:
         print(f'Erro ao acessar o Microserviço: {e}')

@@ -81,14 +81,6 @@ class Relatorio():
 #         except requests.exceptions.RequestException as e:
 #             print(f'Erro ao consumir: {e}')
 #             return None
-class Relatorio():
-    def get(id):
-        try:
-            relatorio = Relatorio.get(id)
-            return relatorio
-        except requests.exceptions.RequestException as e:
-            print(f'Erro ao consumir: {e}')
-            return None
 
 
 def exibir_menu():
