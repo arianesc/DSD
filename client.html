@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebSocket Client</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Cliente WebSocket</title>
 </head>
 <body>
-    <input type="text" id="messageInput" placeholder="Type a message">
-    <button onclick="sendMessage()">Send</button>
-    <div id="output"></div>
+    <div class="container">
+        <input class="message-input"  type="text" id="messageInput" placeholder="Escreva uma mensagem">
+        <button class="send-button" onclick="sendMessage()">Enviar</button>
+        <div class="chat-output" id="output"></div>
+    </div>
 
     <script>
         const socket = new WebSocket("ws://localhost:8765");

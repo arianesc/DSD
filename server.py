@@ -7,9 +7,9 @@ async def server(websocket, path):
     try:
         while True:
             message = await websocket.recv()
-            print(f"Mensagem recebida do cliente: {message}")
+            print(f"Mensagem recebida do usuário: {message}")
 
-            response = input("Server - : ")
+            response = input("IFRN: ")
             await websocket.send(response)
     except websockets.exceptions.ConnectionClosedError:
         print(f"Conexão encerrada com {path}")
